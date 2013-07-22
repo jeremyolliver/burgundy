@@ -15,5 +15,7 @@
 /log/*.log
 /tmp
 
+.ruby-version
+
 # Don't force particular versions
 Gemfile.lock
