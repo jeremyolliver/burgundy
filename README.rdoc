@@ -1,5 +1,9 @@
 == Burgundy
 
+{<img src="https://travis-ci.org/jeremyolliver/burgundy.png?branch=master" alt="Build Status" />}[https://travis-ci.org/jeremyolliver/burgundy]
+{<img src="https://coveralls.io/repos/jeremyolliver/gvis/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/jeremyolliver/burgundy?branch=master]
+{<img src="https://codeclimate.com/github/jeremyolliver/burgundy.png" />}[https://codeclimate.com/github/jeremyolliver/burgundy]
+
 Burgundy is an application aimed at browsing html reports generated over time from your software project, such as code coverage, code quality scoring etc.
 
 This is still a Work in Progress, and as such, this is the list of features intended to be supported:
