@@ -1,0 +1,15 @@
+default: &default
+  access_key_id: 'abcdefghijklmnop'
+  secret_access_key: '1234567891012345'
+  authentication:
+    enabled: false
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+  authentication:
+    enabled: true
+    username: foo
+    password: bar
