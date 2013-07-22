@@ -1,11 +1,12 @@
 default: &default
-  access_key_id: 'abcdefghijklmnop'
-  secret_access_key: '1234567891012345'
+  access_key_id: 'default_key'
+  secret_access_key: 'default_secret_access_key'
   authentication:
     enabled: false
 
 test:
   <<: *default
+  access_key_id: 'test_env_key'
 
 development:
   <<: *default

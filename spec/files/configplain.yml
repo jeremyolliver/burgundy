@@ -1,0 +1,4 @@
+access_key_id: 'simple_key_id'
+secret_access_key: 'simple_secret_access_key'
+authentication:
+  enabled: false

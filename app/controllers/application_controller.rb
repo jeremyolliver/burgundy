@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configuration
-    Configuration.config
+    Burgundy::Configuration.config
   end
 
 end
