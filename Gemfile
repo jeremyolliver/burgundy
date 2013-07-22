@@ -30,7 +30,8 @@ end
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 2.14.0'
-  gem 'simplecov'
+  gem 'coveralls', require: false
+  gem 'simplecov', require: false
 end
 
 # Use ActiveModel has_secure_password
