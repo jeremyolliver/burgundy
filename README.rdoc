@@ -1,28 +1,42 @@
-== README
+== Burgundy
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Burgundy is an application aimed at browsing html reports generated over time from your software project, such as code coverage, code quality scoring etc.
 
-Things you may want to cover:
+This is still a Work in Progress, and as such, this is the list of features intended to be supported:
 
-* Ruby version
+- serve html reports stored on private S3 buckets
+- optional authentication restricting access
+- support for multiple projects
+- interface to browse between reports over time
+- graph of progress over time
 
-* System dependencies
+=== Installation
 
-* Configuration
+Ruby 2.0 and Ruby 1.9.3 will be officially supported and tested on. To install the application:
 
-* Database creation
+Checkout the source code, and install the dependencies:
 
-* Database initialization
+    git clone git@github.com:jeremyolliver/burgundy.git
+    bundle install --deployment --without development test
+    bundle exec rails server
 
-* How to run the test suite
+=== Development
 
-* Services (job queues, cache servers, search engines, etc.)
+Checkout the source code
 
-* Deployment instructions
+    git clone git@github.com:jeremyolliver/burgundy.git
 
-* ...
+Install dependencies
+
+    bundle install
+
+Run server
+
+    bundle exec rails server
+
+Run tests
+
+    bundle exec rake spec
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Copyright 2013 Jeremy Olliver
