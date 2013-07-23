@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_if_required
     if configuration.authentication_enabled?
-      unless authenticate_with_http_basic { |u, p| u == configuration.authenticated?(u, p) }
+      unless authenticate_with_http_basic { |u, p| configuration.authenticated?(u, p) }
         request_http_basic_authentication('Burgundy')
       end
     end

@@ -11,11 +11,21 @@ describe HomeController do
     before do
       with_authentication_enabled
     end
+    after do
+      with_default_config
+    end
 
     it 'should deny unauthenticated access' do
       get :index
-      binding.pry
       response.should_not be_successful
+      response.status.should eq(401) # Unauthorized
+    end
+
+    it 'should allow an authenticated user' do
+      with_authenticated_request
+      Burgundy::Configuration.config.should be_authentication_enabled
+      get :index
+      response.should be_successful
     end
   end
 

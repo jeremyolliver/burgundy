@@ -15,6 +15,7 @@ module Burgundy
           }
         }
       end
+
     end
 
     def initialize(file = nil)
@@ -30,13 +31,11 @@ module Burgundy
       username == self[:authentication][:username] && password == self[:authentication][:password]
     end
 
-    def to_h
-      @attributes.clone
-    end
-
     def reload!(file = nil)
-      @attributes = Configuration.defaults
+      @attributes = {}
+      @attributes.merge!(self.class.defaults)
       load_from_config_file(file)
+      self
     end
 
     def [](key)
@@ -47,7 +46,7 @@ module Burgundy
       key = key.to_sym
       if value.is_a? Hash
         @attributes[key] ||= {}
-        @attributes[key].merge!(value)
+        @attributes[key].merge!(value.symbolize_keys)
       else
         @attributes[key] = value
       end
@@ -62,7 +61,7 @@ module Burgundy
         config_to_load = settings.delete(Rails.env) || settings
         update!(config_to_load)
       else
-        warn("Couldn't find configuration file #{file}")
+        Rails.logger.warn("Couldn't find configuration file #{file}")
       end
     end
 

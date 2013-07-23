@@ -17,6 +17,12 @@ def use_authenticated_config
   # Burgundy::Configuration.stub(:config).and_return authenticated_config
 end
 
-def with_authenticated_request
-  # @request.headers['HTTP_BASIC'] # TODO: encode http basic auth here
+def with_default_config
+  Burgundy::Configuration.config.reload!
+end
+
+def with_authenticated_request(username = nil, password = nil)
+  username ||= Burgundy::Configuration.config[:authentication][:username]
+  password ||= Burgundy::Configuration.config[:authentication][:password]
+  request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(username, password)
 end

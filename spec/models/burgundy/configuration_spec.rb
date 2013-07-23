@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Burgundy::Configuration do
 
-  let(:default_config) { Burgundy::Configuration.config('nonexistent/config.yml') }
+  let(:default_config) { Burgundy::Configuration.config.reload! }
 
   it 'should have default values' do
     default_config[:authentication].should be_a Hash
@@ -19,6 +19,11 @@ describe Burgundy::Configuration do
     config = Burgundy::Configuration.new('spec/files/configplain.yml')
     config[:access_key_id].should eq('simple_key_id')
     config[:secret_access_key].should eq('simple_secret_access_key')
+  end
+
+  it 'should allow overriding of defaults' do
+    secure_config = Burgundy::Configuration.new('spec/files/authconfig.yml')
+    secure_config[:authentication][:enabled].should be_true
   end
 
 end
