@@ -21,6 +21,15 @@ module Burgundy
       reload!(file)
     end
 
+    def authentication_enabled?
+      self[:authentication][:enabled] && self[:authentication][:username].present? && self[:authentication][:password].present?
+    end
+
+    def authenticated?(username, password)
+      return true unless self[:authentication][:enabled]
+      username == self[:authentication][:username] && password == self[:authentication][:password]
+    end
+
     def to_h
       @attributes.clone
     end
